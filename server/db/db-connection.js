@@ -6,43 +6,33 @@ const db = new Pool({
   }
 });
 
-const getEvents = () => {
+const getSighting = () => {
   return new Promise(function(resolve, reject) {
-    pool.query('SELECT * FROM events ORDER BY id ASC', (error, events) => {
+    pool.query('SELECT * FROM sightings ORDER BY id ASC', (error, sightings) => {
       if (error) {
         reject(error)
       }
-      resolve(events.rows);
+      resolve(sightings.rows);
     })
   }) 
 }
-const createEvents = (body) => {
+const createSighting = (body) => {
   return new Promise(function(resolve, reject) {
-    const { id,title, location, eventtime, eventdescription,category } = body
-    pool.query('INSERT INTO events (title, location, date, eventdescription,category) VALUES ($1, $2 , $3 ,$4 ,$5) RETURNING *', [title,date, location, eventdescription, category], (error, events) => {
+    const { nickname,location } = body
+    pool.query('INSERT INTO sightings ( nickname, location) VALUES ($1, $2 ) RETURNING *', [nickname, location], (error, sightings) => {
       if (error) {
         reject(error)
       }
-      resolve(`A new event has been added : ${events.rows[0]}`)
+      resolve(`A new Animal Sighting has been added : ${sightings.rows[0]}`)
     })
   })
 }
-const deleteEvents = () => {
-  return new Promise(function(resolve, reject) {
-    const id = parseInt(request.params.id)
-    pool.query('DELETE FROM events WHERE id = $1', [id], (error, events) => {
-      if (error) {
-        reject(error)
-      }
-      resolve(`User deleted event with ID: ${id}`)
-    })
-  })
-}
+ 
 
 module.exports = {
-  getEvents,
-  createEvents,
-  deleteEvents,
+  getSighting,
+  createSighting,
+ 
 }
 
 
