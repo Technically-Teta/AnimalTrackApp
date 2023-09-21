@@ -2,13 +2,12 @@ import './App.css';
 import  {useState, useEffect} from 'react';
 import SightCard from './components/sightCard';
 
-
-// if create event is clicked, it will redirect to the create event page, SET UP CORRECTLY? DO THE SAME FOR EDIT AND DELETE?
+ 
 function App() {
 
 
   const [sightings, setSightings] = useState(false);
-  //const [createEvent, setCreateEvent] = useState(false);
+ 
   
 
     const getSighting = () => {
