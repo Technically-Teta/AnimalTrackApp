@@ -28,7 +28,7 @@ app.get('/api/animalsightings', async (req, res) =>{
     try{
         const { rows: sightings } = await db.query('SELECT * FROM sightings');
         console.log("in the server", sightings);
-        res.send(sightings);
+        res.send(sightings.rows);
 
     } catch(error){
         console.log(error);

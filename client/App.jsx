@@ -26,15 +26,15 @@ function App() {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({id , nickname, location,  }),
+    body: JSON.stringify({id , nickname, location }),
       })
       .then(response => {
         return response.text();
       })
     
-      .then(events => {
-        alert(events);
-        getRequest();
+      .then(sightings => {
+        alert(sightings);
+        getSighting();
       });
   
 
@@ -43,16 +43,13 @@ function App() {
 
   return (
     <div className="App">
-      <Eventsheader eventname = {' Brought to you from Supreme Events...'} />
-    <h1>Techtonica 2023 H2 events</h1>
-     {sortedEvents?.map((event)=>  <ModEvents key={event.id} event={event}  />)}
-    {events? <Events events={events}   /> : <h2>Loading...</h2>}
-    <button className='btn' onClick={() =>setCreateEvent(true)}>Add New Event</button>
+      
+    <h1>Animal Sighting Tracker</h1>
+      
+    <button className='btn' >Add New Event</button>
     <br />
     <button  className='btn' onClick={DeleteEvent}>Delete Event</button>
-     <TickIcon />
-     {CreateEvents &&<CreateEvents setCreateEvent={setCreateEvent} />}
-     <FormEvent/>
+     
   </div>
 
   );
@@ -61,3 +58,19 @@ function App() {
 };
 
 export default App
+
+
+
+// return (
+//     <div className="App">
+      
+//     <h1>Animal Sighting Tracker</h1>
+//      {sortedEvents?.map((event)=>  <ModEvents key={event.id} event={event}  />)}
+//     {events? <Events events={events}   /> : <h2>Loading...</h2>}
+//     <button className='btn' onClick={() =>setCreateEvent(true)}>Add New Event</button>
+//     <br />
+//     <button  className='btn' onClick={DeleteEvent}>Delete Event</button>
+//      <TickIcon />
+//      {CreateEvents &&<CreateEvents setCreateEvent={setCreateEvent} />}
+//      <FormEvent/>
+//   </div>
