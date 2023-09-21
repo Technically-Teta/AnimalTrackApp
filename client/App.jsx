@@ -21,12 +21,12 @@ function App() {
 
     useEffect(() => {getSighting()}, []);
 
-    fetch("http://localhost:8080/api/events", { 
+    fetch("http://localhost:8080/api/animalsightings", { 
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({id,title, location, eventdescription, eventtime ,category}),
+    body: JSON.stringify({id , nickname, location,  }),
       })
       .then(response => {
         return response.text();

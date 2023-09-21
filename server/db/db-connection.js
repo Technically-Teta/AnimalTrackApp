@@ -18,8 +18,8 @@ const getSighting = () => {
 }
 const createSighting = (body) => {
   return new Promise(function(resolve, reject) {
-    const { nickname,location } = body
-    pool.query('INSERT INTO sightings ( nickname, location) VALUES ($1, $2 ) RETURNING *', [nickname, location], (error, sightings) => {
+    const { id,nickname,location } = body
+    pool.query('INSERT INTO sightings ( nickname, location) VALUES ($1, $2 ) RETURNING *', [id,nickname, location], (error, sightings) => {
       if (error) {
         reject(error)
       }
