@@ -48,7 +48,7 @@ function App() {
       
     <button className='btn' >Add New Event</button>
     <br />
-    <button  className='btn' onClick={DeleteEvent}>Delete Event</button>
+    <button  className='btn' >Delete Event</button>
      
   </div>
 
